@@ -27,7 +27,7 @@ RUN set -x && \
     apt-get update -o Dir::Etc::sourcelist="sources.list.d/local_imagemagick_repo.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0" -y && \
     apt-get --no-install-recommends install -t imagemagick-with-webp libmagickcore-dev libmagickwand-dev -y --force-yes && \
     [ -f libmagickcore-dev_$(dpkg -s libmagickcore-dev | sed -nr 's;^Version: [0-9]+:(.*);\1;p')* ] && [ -f libmagickwand-dev_$(dpkg -s libmagickwand-dev | sed -nr 's;^Version: [0-9]+:(.*);\1;p')* ] && \
-    apt-get --no-install-recommends install libcurl4-gnutls-dev libwebp-dev -y && \
+    apt-get --no-install-recommends install libcurl4-gnutls-dev libwebp-dev ghostscript -y && \
     apt-get remove -y --auto-remove --purge apt-utils && \
     rm -rf /var/lib/apt/lists/* && \
     cd - && \
